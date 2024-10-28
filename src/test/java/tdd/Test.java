@@ -17,6 +17,7 @@ class Test {
 
 	void test2() {
 		HolidayCalendar holidayCalendar = new HolidayCalendar();
+		holidayCalendar.makeDayOfWeekAsHoliday(DayOfWeek.SUNDAY);
 		LocalDate eMonday = LocalDate.of(2014,3,3);
 		//		empezar por el assert
 		Assertions.assertFalse(holidayCalendar.isHoliday(eMonday));
@@ -24,9 +25,16 @@ class Test {
 }
 
 class HolidayCalendar {
+	
+	private DayOfWeek dayOfWeekHoliday = DayOfWeek.SATURDAY;
 
 	public boolean isHoliday(LocalDate localDate) {
-		return DayOfWeek.SATURDAY.equals(localDate.getDayOfWeek());
+		return dayOfWeekHoliday.equals(localDate.getDayOfWeek());
+	}
+
+	public void makeDayOfWeekAsHoliday(DayOfWeek dayOfWeek) {
+		dayOfWeekHoliday = dayOfWeek;
+		
 	}
 
 }
